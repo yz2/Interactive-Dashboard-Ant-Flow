@@ -42,11 +42,7 @@ parser.add_argument("--alpha",
 )
 parser.add_argument("--a0",default = 1)
 parser.add_argument("--b",default = 23)
-parser.add_argument("--a1",default = 1)
-parser.add_argument("--a2",default = 1)
 parser.add_argument("--gamma",default = 1)
-parser.add_argument("--gamma1", default = 1)
-parser.add_argument("--gamma2", default = 1)
 parser.add_argument("--T",default = 500, help="Total time steps")
 
 args = parser.parse_args()
@@ -57,13 +53,9 @@ connectivity = int(args.connectivity)
 N = int(args.N)
 theta = float(args.theta)
 alpha = float(args.alpha)
-a0 = float(args.a0)
+a = float(args.a)
 b = float(args.b)
-a1 = float(args.a1)
-a2 = float(args.a2)
 gamma = float(args.gamma)
-gamma1 = float(args.gamma1)
-gamma2 = float(args.gamma2)
 T = int(args.T)
 
 
@@ -73,7 +65,7 @@ Xe, Ye, Xn, Yn, labels, M, new_position = graph_structure(node_num, G)
 
 # sp,sp_Xe,sp_Ye = shortest_path(G,nests,Xn, Yn) #compute one possible path connecting all the paths
 
-v_seq, eta_seq, ant_trace = simulation(node_num,nests,alpha,a0,b,gamma,T,N,neighbor,theta)
+v_seq, eta_seq, ant_trace = simulation(node_num,nests,alpha,a,b,gamma,T,N,neighbor,theta)
 
 fig = make_subplots(rows=2, cols=2, subplot_titles = ('Population Distribution',
             'Barplot of Population',
