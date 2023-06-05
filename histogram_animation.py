@@ -40,7 +40,7 @@ parser.add_argument("--alpha",
                     default = 0.85,
                     help="exploitation probability"
 )
-parser.add_argument("--a0",default = 1)
+parser.add_argument("--a",default = 1)
 parser.add_argument("--b",default = 23)
 parser.add_argument("--gamma",default = 1)
 parser.add_argument("--T",default = 500, help="Total time steps")
