@@ -64,25 +64,6 @@ def graph_structure(N_node, G):
     
     return Xe, Ye, Xn, Yn, labels, M, position
 
-# def shortest_path(G,nests,Xn,Yn):
-#     #must have more than one nest
-#     sp=[]
-#     sp_Xe=[]
-#     sp_Ye=[]
-#     for i in range(len(nests)-1):
-#         sp_i = nx.shortest_path(G, source=nests[i], target=nests[i+1])
-#         for j in range(len(sp_i)-1):
-#             #add edges on the shortest path between nest i and nest i+1
-#             sp_Xe += [Xn[sp_i[j]], Xn[sp_i[j+1]], None]
-#             sp_Ye += [Yn[sp_i[j]], Yn[sp_i[j+1]], None]
-#         sp.append(sp_i.copy()) #add shortest path between nest i and nest i+1 to sp
-#     sp_last = nx.shortest_path(G, source=nests[-1], target=nests[0])
-#     for j in range(len(sp_last)-1):
-#         #add edges on the shortest path between nest i and nest i+1
-#         sp_Xe += [Xn[sp_last[j]], Xn[sp_last[j+1]], None]
-#         sp_Ye += [Yn[sp_last[j]], Yn[sp_last[j+1]], None]
-#     return sp,sp_Xe,sp_Ye
-
 def make_annotations(pos, text, labels, M, nests, font_size=10, font_color='rgb(250,250,250)'):
     L=len(pos)
     if len(text)!=L:
@@ -126,28 +107,6 @@ def make_annotations(pos, text, labels, M, nests, font_size=10, font_color='rgb(
         )
         
     return annotations
-
-#transition probability per time step
-# def transition_prob(N_node, neighbor, nests, v, X, alpha, a, b, gamma):
-#     #v is pheromone level
-#     P=np.zeros((N_node,N_node)) #initialize transition matrix
-#     for e in range(N_node):
-#         if e not in nests:
-#             for e_prime in neighbor[e]:
-#                 P[e,e_prime]=alpha*(1+v[e_prime])/np.sum((1+v[neighbor[e]]))+(1-alpha)/(len(neighbor[e]))
-#                 # P[e,e_prime]=(1+v[e_prime])/np.sum((1+v[neighbor[e]]))
-        
-#         if e in nests:
-#             Lambda =np.count_nonzero(X==e)/len(X)
-#             congestion = 1/(a+b*pow(Lambda,gamma))
-#             for e_prime in neighbor[e]:
-#                 move = alpha*(1+v[e_prime])/np.sum((1+v[neighbor[e]]))+(1-alpha)/(len(neighbor[e]))
-#                 # move = (1+v[e_prime])/np.sum((1+v[neighbor[e]]))
-#                 P[e,e_prime]=congestion * move 
-            
-#             P[e,e] = 1-congestion            
-    
-#     return P
 
 def transition_prob(N_node, neighbor, nests, v, X, alpha, a, b, gamma,theta):
     #v is pheromone level
