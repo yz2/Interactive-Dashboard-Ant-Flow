@@ -10,11 +10,7 @@ Parameters:
 - alpha: exploitation rate of ants (the probability that ants proceed following pheromone)
 - a0: parameter for congestion function (default = 1)
 - b: parameter for congestion function (default = 23)
-- a1: parameter for congestion function (default = 1)
-- a2: parameter for congestion function (default = 1)
 - gamma: parameter for congestion function (default = 1)
-- gamma1: parameter for congestion function (default = 1)
-- gamma2: parameter for congestion function (default = 1)
 - T: total number of time steps in the animation (default = 500)
 
 
