@@ -8,7 +8,7 @@ Parameters:
 - connectivity: connectivity of the graph (default = 3)
 - theta: pheromone decaying rate (default=0.1, i.e. at each time step, new pheromone = old pheromone * (1-theta))
 - alpha: exploitation rate of ants (the probability that ants proceed following pheromone)
-- a0: parameter for congestion function (default = 1)
+- a: parameter for congestion function (default = 1)
 - b: parameter for congestion function (default = 23)
 - gamma: parameter for congestion function (default = 1)
 - T: total number of time steps in the animation (default = 500)
