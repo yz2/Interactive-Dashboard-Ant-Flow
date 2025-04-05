@@ -4,9 +4,9 @@ Guidance:
 
 2. copy and paste the address after "Running on", for example you may see (where 'x' are numbers)
 
-```Running on http://xxx.x.x.x:xxxx```
+  ```Running on http://xxx.x.x.x:xxxx```
 
-then you copy and paste ```http://xxx.x.x.x:xxxx``` in your browser and then you can see the interactive visualization of ant flow. 
+  then you copy and paste ```http://xxx.x.x.x:xxxx``` in your browser and then you can see the interactive visualization of ant flow. 
 
 Parameters: 
 
