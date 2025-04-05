@@ -1,4 +1,4 @@
-Run ```python3 histogram_animation.py --N=500 --n_nests=5 --connectivity=3 --alpha=0.85 --theta=0.1```
+Run ```app.py```
 
 Parameters: 
 
