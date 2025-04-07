@@ -1,3 +1,5 @@
+Interactive Dashboard for ant flow visualization: simulating large population of ant trails.
+
 Guidance:
 
 1. Run ```Python3 app.py``` in terminal
