@@ -1,14 +1,32 @@
 Interactive Dashboard for ant flow visualization: simulating large population of ant trails.
 
-Guidance:
+## Getting Started
 
-1. Run ```Python3 app.py``` in terminal
+### 1. Install dependencies
 
-2. copy and paste the address after "Running on", for example you may see (where 'x' are numbers)
+Make sure you have Python 3.8+ and pip installed. Then, in your project directory, run:
 
-  ```Running on http://xxx.x.x.x:xxxx```
+```bash
+pip install streamlit plotly networkx igraph pandas
+```
 
-  then you copy and paste ```http://xxx.x.x.x:xxxx``` in your browser and you should see the interactive visualization of ant flow. 
+### 2. Launch the Streamlit app
+
+From your project directory, run:
+
+```bash
+streamlit run app.py
+```
+
+### 3. Open the app in your browser
+
+After running the above command, Streamlit will display a local URL in the terminal, typically:
+
+```
+Local URL: http://localhost:8501
+```
+
+Open that address in your browser to use the interactive ant flow visualization dashboard.
 
 Parameters: 
 
