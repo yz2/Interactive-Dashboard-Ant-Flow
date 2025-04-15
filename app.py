@@ -343,19 +343,29 @@ def generate_animation(
 
 
 # Streamlit UI
+st.set_page_config(layout="wide")
 st.title("Ant Flow Visualization")
 
 with st.form(key="input_form"):
-    node_number = st.number_input("Node Number", min_value=1, value=20)
-    n_nests = st.number_input("Number of Nests", min_value=1, value=5)
-    connectivity = st.number_input("Connectivity", min_value=1, value=4)
-    N = st.number_input("Number of Ants", min_value=1, value=500)
-    theta = st.number_input("Pheromone Decaying Rate (Theta)", value=0.1, format="%f")
-    alpha = st.number_input("Exploitation Probability (Alpha)", value=0.85, format="%f")
-    a0 = st.number_input("value of a0", value=1)
-    b = st.number_input("value of b", value=23)
-    gamma = st.number_input("value of gamma", value=1)
-    T = st.number_input("total time steps", min_value=1, value=500)
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        node_number = st.number_input("Node Number", min_value=1, value=20)
+        theta = st.number_input(
+            "Pheromone Decaying Rate (Theta)", value=0.1, format="%f"
+        )
+        a0 = st.number_input("value of a0", value=1)
+    with col2:
+        n_nests = st.number_input("Number of Nests", min_value=1, value=5)
+        alpha = st.number_input(
+            "Exploitation Probability (Alpha)", value=0.85, format="%f"
+        )
+        b = st.number_input("value of b", value=23)
+    with col3:
+        connectivity = st.number_input("Connectivity", min_value=1, value=4)
+        gamma = st.number_input("value of gamma", value=1)
+    with col4:
+        N = st.number_input("Number of Ants", min_value=1, value=500)
+        T = st.number_input("total time steps", min_value=1, value=500)
     submit_button = st.form_submit_button(label="Submit")
 
 if submit_button:
