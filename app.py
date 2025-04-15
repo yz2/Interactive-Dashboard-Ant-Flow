@@ -30,7 +30,10 @@ def generate_animation(
             "Pheromone Distribution",
             "Barplot of Pheromone",
         ),
+        horizontal_spacing=0.1,
+        vertical_spacing=0.1,
     )
+    fig.update_layout(height=700)
 
     axis = dict(
         showline=False,  # hide axis line, grid, ticklabels and  title
@@ -343,7 +346,6 @@ def generate_animation(
 
 
 # Streamlit UI
-st.set_page_config(layout="wide")
 st.title("Ant Flow Visualization")
 
 with st.form(key="input_form"):
