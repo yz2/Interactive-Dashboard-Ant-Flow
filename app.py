@@ -1,93 +1,10 @@
-# Additional Imports for Dash
-import argparse
-import os
-import random
-
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
 import pandas as pd
 import plotly.graph_objects as go
-from dash import Dash
-from dash.dependencies import Input, Output
+import streamlit as st
 from plotly.subplots import make_subplots
 
 from functions import *
 from graph import *
-
-# from dash.dependencies import Input, Output
-
-random.seed(2022)
-
-# ... (keep your existing imports and other code)
-
-# Remove the argparse section since we're using Dash for input
-# Also remove the fig.show() since we'll display the figure in Dash
-
-# Initialize the Dash app
-app = Dash(__name__)
-
-# Define the app layout
-app.layout = html.Div(
-    [
-        html.H1("Ant Flow Visualization"),
-        html.Div(
-            [
-                html.Label("Node Number:"),
-                dcc.Input(id="input-node-number", type="number", value=20),
-                html.Label("Number of Nests:"),
-                dcc.Input(id="input-n-nests", type="number", value=5),
-                html.Label("Connectivity:"),
-                dcc.Input(id="input-connectivity", type="number", value=4),
-                html.Label("Number of Ants:"),
-                dcc.Input(id="input-N", type="number", value=500),
-                html.Label("Pheromone Decaying Rate (Theta):"),
-                dcc.Input(id="input-theta", type="number", value=0.1),
-                html.Label("Exploitation Probability (Alpha):"),
-                dcc.Input(id="input-alpha", type="number", value=0.85),
-                html.Label("value of a0:"),
-                dcc.Input(id="input-a0", type="number", value=1),
-                html.Label("value of b"),
-                dcc.Input(id="input-b", type="number", value=23),
-                html.Label("value of gamma"),
-                dcc.Input(id="input-gamma", type="number", value=1),
-                html.Label("total time steps"),
-                dcc.Input(id="input-T", type="number", value=500),
-                html.Button("Submit", id="submit-button"),
-            ]
-        ),
-        dcc.Graph(id="animated-graph"),
-    ]
-)
-
-
-@app.callback(
-    Output("animated-graph", "figure"),
-    [
-        Input("submit-button", "n_clicks"),
-        Input("input-node-number", "value"),
-        Input("input-n-nests", "value"),
-        Input("input-connectivity", "value"),
-        Input("input-N", "value"),
-        Input("input-theta", "value"),
-        Input("input-alpha", "value"),
-        Input("input-a0", "value"),
-        Input("input-b", "value"),
-        Input("input-gamma", "value"),
-        Input("input-T", "value"),
-    ],
-)
-def update_graph(
-    n_clicks, node_number, n_nests, connectivity, N, theta, alpha, a0, b, gamma, T
-):
-    # The previously provided code for generating the figure goes here.
-    # Make sure to return the fig at the end.
-    # if n_clicks == 0:
-    #     return dash.no_update  # Do nothing if button wasn't clicked yet
-    fig = generate_animation(
-        node_number, n_nests, connectivity, N, theta, alpha, a0, b, gamma, T
-    )
-    return fig
 
 
 def generate_animation(
@@ -425,6 +342,24 @@ def generate_animation(
     return fig
 
 
-# Run the app
-if __name__ == "__main__":
-    app.run_server(debug=False)
+# Streamlit UI
+st.title("Ant Flow Visualization")
+
+with st.form(key="input_form"):
+    node_number = st.number_input("Node Number", min_value=1, value=20)
+    n_nests = st.number_input("Number of Nests", min_value=1, value=5)
+    connectivity = st.number_input("Connectivity", min_value=1, value=4)
+    N = st.number_input("Number of Ants", min_value=1, value=500)
+    theta = st.number_input("Pheromone Decaying Rate (Theta)", value=0.1, format="%f")
+    alpha = st.number_input("Exploitation Probability (Alpha)", value=0.85, format="%f")
+    a0 = st.number_input("value of a0", value=1)
+    b = st.number_input("value of b", value=23)
+    gamma = st.number_input("value of gamma", value=1)
+    T = st.number_input("total time steps", min_value=1, value=500)
+    submit_button = st.form_submit_button(label="Submit")
+
+if submit_button:
+    fig = generate_animation(
+        node_number, n_nests, connectivity, N, theta, alpha, a0, b, gamma, T
+    )
+    st.plotly_chart(fig, use_container_width=True)
