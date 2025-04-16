@@ -94,14 +94,13 @@ def generate_animation(
             },
             text=labels,
             hoverinfo="text",
-            opacity=0.5,
+            opacity=0.6,
         ),
         row=1,
         col=1,
     )
 
-    # add initial trace to the histogram plot
-    ### histogram of initial population distribution
+    # Add initial histogram for population distribution
     eta_df = pd.DataFrame(eta_seq[0])
     eta_df["node"] = eta_df.index
     eta_df = eta_df.rename({0: "pop"}, axis=1)
@@ -117,7 +116,7 @@ def generate_animation(
         col=2,
     )
 
-    # add initial traces to subplot of pheromone
+    # Add initial traces for pheromone distribution
     fig.add_trace(
         go.Scatter(
             x=Xe,
@@ -143,14 +142,13 @@ def generate_animation(
             },
             text=labels,
             hoverinfo="text",
-            opacity=0.5,
+            opacity=0.6,
         ),
         row=2,
         col=1,
     )
 
-    # add initial trace to the histogram plot
-    ### histogram of initial population distribution
+    # Add initial histogram for pheromone levels
     v_df = pd.DataFrame(v_seq[0])
     v_df["node"] = v_df.index
     v_df = v_df.rename({0: "pop"}, axis=1)
